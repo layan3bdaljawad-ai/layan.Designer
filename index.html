@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Layan — مصممة بوستراتٍ وهويّات بصرية</title>
+<meta name="description" content="الموقع الشخصي لليان: تصاميم وبوسترات حملة PixelSite.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="#top">Layan</a>
+  <ul><li><a href="#about">About Me</a></li><li><a href="#works">My Work</a></li><li><a href="#contact">Contact</a></li></ul>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div>
+    <span class="eyebrow"> Creative Designer</span>
+    <h1>Layan</h1>
+    <p>عالَم ليان الإبداعي — مساحة لكل تصاميمي وبوستراتي، بألوان تحكي قصة وتفاصيل تُصنع بشغف.</p>
+    <div class="btns"><a class="btn btn--main" href="#works">شاهد أعمالي</a><a class="btn btn--ghost" href="#contact">تواصل معي</a></div>
+  </div>
+  <div class="portrait">
+    <div class="frame"><img src="layann.jpg" alt="صورة ليان" width="340" height="425"></div>
+    <img class="pixo" src="pixo.webp" alt="" aria-hidden="true">
+  </div>
+</div></header>
+
+<main>
+<section class="section" id="about"><div class="wrap about">
+  <div>
+    <h2 class="title" style="text-align:start;margin-bottom:24px"><small>ABOUT ME</small>مين هي ليان؟</h2>
+    <p>أنا ليان، طالبة علم حاسوب – مسار الوسائط المتعددة في جامعة الإسراء، وعضو في فريق السوشال ميديا في IEEE IU</p>
+    <p>خلال مشاركتي في PixelSite 2.0، كنت مسؤولة عن التصميم، وكانت تجربة أضفت فيها الكثير من شغفي وحبي للتصميم، وفي نفس الوقت طورت من مهاراتي وتعلمت أشياء جديدة مع كل تصميم.</p>
+    <p>وهنا أشارككم مجموعة من التصاميم التي عملت عليها خلال المسابقة، والتي كانت جزءًا من رحلتي وتجربتي في PixelSite 2.0.</p>
+    <div class="stats">
+     
+      <div class="stat"><b>2026</b><span>PixelSite v2</span></div>
+    </div>
+  </div>
+  <div class="posters"><img src="55.jpg" alt="" loading="lazy"><img src="99.jpg" alt="" loading="lazy"></div>
+</div></section>
+
+<section class="section" id="works"><div class="wrap">
+  <h2 class="title"><small>PIXELSITE GALLERY</small>My Work</h2>
+  <div class="gallery" id="gallery"></div>
+</div></section>
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="عرض الصورة">
+  <button class="x" aria-label="إغلاق">✕</button><button class="pv" aria-label="السابق">›</button><button class="nx" aria-label="التالي">‹</button>
+  <div><img id="lbImg" alt=""><p id="lbCap"></p></div>
+</div>
+
+<footer class="footer" id="contact"><div class="wrap">
+  <h2> خلّينا نشارك الشغف</h2>
+  <p>عندك فكرة أو مشروع؟ راسلني وبنحكي.</p>
+  <div class="btns" style="justify-content:center">
+    <a class="btn btn--main" href="mailto:layan3bdaljawad@gmail.com">layan3bdaljawad@gmail.com</a>
+    <a class="btn btn--ghost" href="https://www.linkedin.com/in/layan-abd-aljawad-b4b0a540b?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <div class="made">صُنع بحب لأجل ليان <b>♥</b><small>  Dalia </small></div>
+</div></footer>
+
+<script>
+const works=[["8","Something Big Is Coming"],["1","PixelSite Is Back"],["7","Version 2 · 2026"],["14","Website Design & Development Competition"],["2","Our"],["3","Meet"],["6","Team"],["13","Are You Ready?"],["4","Last Chance to Join"],["5","Workshop #1 · Web Basics"],["10","Workshop #2 · Web Design"],["11","Workshop #3 · Firebase"],["12","Workshop #4 · Documentation"],["q","results"],["ww","32 team "],["w","10 team"],["o",""],["oo",""],["h",""],["hh",""],["hhh",""] ];
+const g=document.getElementById("gallery"),lb=document.getElementById("lb"),li=document.getElementById("lbImg"),lc=document.getElementById("lbCap");let cur=0;
+works.forEach(([n,c],i)=>{const b=document.createElement("button");b.className="card";b.setAttribute("aria-label",c);
+b.innerHTML=`<img src="${n}.jpg" alt="${c}" loading="lazy" width="600" height="800"><span class="no">${String(i+1).padStart(2,"0")}</span><span class="cap">${c}</span>`;
+b.onclick=()=>show(i);g.appendChild(b)});
+const io=new IntersectionObserver(es=>{let k=0;es.forEach(e=>{if(e.isIntersecting){e.target.style.transitionDelay=(k++*140)+"ms";e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.15});
+g.querySelectorAll(".card").forEach(c=>io.observe(c));
+function show(i){cur=(i+works.length)%works.length;li.src=works[cur][0]+".jpg";lc.textContent=String(cur+1).padStart(2,"0")+" / "+works.length+" — "+works[cur][1];lb.classList.add("open")}
+lb.querySelector(".x").onclick=()=>lb.classList.remove("open");
+lb.querySelector(".pv").onclick=()=>show(cur-1);lb.querySelector(".nx").onclick=()=>show(cur+1);
+lb.onclick=e=>{if(e.target===lb)lb.classList.remove("open")};
+addEventListener("keydown",e=>{if(!lb.classList.contains("open"))return;if(e.key==="Escape")lb.classList.remove("open");if(e.key==="ArrowLeft")show(cur+1);if(e.key==="ArrowRight")show(cur-1)});
+let sx=0;lb.addEventListener("touchstart",e=>sx=e.touches[0].clientX);lb.addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50)show(cur+(d<0?1:-1))});
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
